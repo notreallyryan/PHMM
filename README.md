@@ -4,7 +4,7 @@ In biological studies, proteins are often classified into different evolutionary
 As such, classifying a protein early is useful in the field, as it narrows down the characteristics of the protein, reducing the time and finances needed for lab work. While classification inevitably requires 
 some lab work in order to confirm a protein's family, computational techniques can provide a good estimate of where to start.
 
-The most basic protein family classification is accomplished by using Supervised Machine learning and Profile Hidden Markov Models. In this project, models are generated from multiple aligned amino acid sequences within the same family, and a modified version of the Forwards Algorithm is used to find which model best matches a queried sequence.  
+The most basic protein family classification is accomplished by using Supervised Machine learning and Profile Hidden Markov Models. In this project, models are generated from multiple aligned amino acid sequences within the same family, and a version of the Forwards Algorithm is used to find which model best matches a queried sequence.  
 
 ## Instructions for Use
 
@@ -36,5 +36,5 @@ The last step is to add the transition and emission probabilities to each node, 
 _Note: Steps 1, 2, and 3 are done simultaneously in this implementation so that each model only requires one pass through_ <br />
 _Additional Note: The use of objects as Nodes allows for better envisioning of the model. However, the same model could be achieved using a single 2D array._
 
-### The Modified Forwards Algorithm
+### The Forwards Algorithm
 
