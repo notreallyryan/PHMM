@@ -5,3 +5,5 @@ As such, classifying a protein early is useful in the field, as it narrows down 
 some lab work in order to confirm a protein's family, computational techniques can provide a good estimate of where to start.
 
 The most basic protein family classification is accomplished by using Supervised Machine learning and Profile Hidden Markov Models. In this project, models are generated from multiple aligned amino acid sequences within the same family, and a modified version of the Forwards Algorithm is used to find which model matches a queried sequence the best.  
+
+## Making the Model
