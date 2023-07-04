@@ -33,7 +33,7 @@ The last step is to add the transition and emission probabilities to each node, 
 
 [add image later]
 
-_Note: Steps 1, 2, and 3 are done simultaneously in this implementation so that each model only requires one pass through___
+_Note: Steps 1, 2, and 3 are done simultaneously in this implementation so that each model only requires one pass through_ <br />
 _Additional Note: The use of objects as Nodes allows for better envisioning of the model. However, the same model could be achieved using a single 2D array._
 
 ### The Modified Forwards Algorithm
