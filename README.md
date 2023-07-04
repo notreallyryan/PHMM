@@ -15,7 +15,6 @@ _Requires numpy and pandas to use_
 3. Run the program by...
 
 ## How it works
-_Please note that this implementation is by no means the most optimal or space efficient way to do this!_
 
 ### Making the Profile Hidden Markov Models
 
@@ -26,7 +25,16 @@ If more sequences have blanks at that particular location, the amino acids obser
 
 In this implementation, the user set a value that the fraction of observed amino acids must exceed to be considered a key feature. (ie a value of 0.5 means at least half of the observations at an index must be amino acids to be a key feature) This allows the user to control how flexible a model is. A smaller fraction will increase the matchability between model and any arbitrary sequence, while a larger one will cause the model to be more speciic to the family. 
 
+The second step is to generate the appropriate nodes and connections for the model. In this implementation, Match and Delete Nodes connect to the next Match, Delete, and Insert Node, while Insert Nodes connect to the next Match and Delete Node, but also to themselves. This accounts for the possibility of multiple consecutive insertes between key features. A Start and an End Node are added for simplicity.
 
+[add image later]
+
+The last step is to add the transition and emission probabilities to each node, making sure to use the lapalcian smoothing trick.
+
+[add image later]
+
+_Note: Steps 1, 2, and 3 are done simultaneously in this implementation so that each model only requires one pass through_
+_Additional Note: The use of objects as Nodes allows for better envisioning of the model. However, the same model could be achieved using a single 2D array._
 
 ### The Modified Forwards Algorithm
 
