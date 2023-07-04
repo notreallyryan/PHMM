@@ -17,4 +17,14 @@ _Requires numpy and pandas to use_
 ## How it works
 _Please note that this implementation is by no means the most optimal or space efficient way to do this!_
 
-### Making the Models
+### Making the Profile Hidden Markov Models
+
+Assuming that the sequences provided are already aligned, the first step is to find which sequence indices are likely to be "key features" of the family. This can be done by observing the number of blanks at that index.
+If more sequences have blanks at that particular location, the amino acids observed at that location are more likely to be insertions than hallmark traits. Conversely, blanks at locations with many observed amino acids are likely to be deletions.
+
+[add image later]
+
+In this implementation, the user set a value that the fraction of observed amino acids must exceed to be considered a key feature. (ie a value of 0.5 means at least half of the observations at an index must be amino acids to be a key feature) This allows the user to control how flexible a model is. A smaller fraction will increase the matchability between model and arbitrary sequence, while a larger one will cause the model to be more speciic to the family. 
+
+### The Modified Forwards Algorithm
+
