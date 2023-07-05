@@ -35,4 +35,4 @@ class AAnode(Connected3Node):
             self.State_count += 1
         
         #then make into natural logs of the fractions
-        self.emissions['p'] = np.log(self.emissions['p'].div(self.State_count))
+        self.emissions['p'] = self.emissions['p'].div(self.State_count)

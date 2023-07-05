@@ -51,5 +51,5 @@ class Connected3Node(Node):
             self.transitions.at[0,'p'] = 0
             self.transitions_count -= 1
 
-        self.transitions['p'] = np.log(self.transitions['p'].div(self.transitions_count))
+        self.transitions['p'] = self.transitions['p'].div(self.transitions_count)
     
