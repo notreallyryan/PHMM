@@ -6,11 +6,12 @@ sys.path.insert(0,".")
 from Storage import DataBase
 from Algorithms import Bestmatch
 from Training import Trainer
+from Process import Reader
 
 from os.path import dirname, abspath
 from os import listdir
 from os.path import isfile, join
-import Reader
+
 
 class Requests:
 
@@ -28,9 +29,9 @@ class Requests:
         """
         self.Database.clear_data()
 
-        d = dirname(dirname(abspath(__file__))) + "/FASTA"
+        d = dirname(dirname(abspath(__file__))) + "/_FASTA"
         onlyfiles = [f for f in listdir(d) if isfile(join(d, f))]
-        onlyfiles.remove('.DS_Store') #get rid of this idk why it's there
+        if '.DS_Store' in onlyfiles: onlyfiles.remove('.DS_Store') #get rid of this idk why it's there
 
         for name in onlyfiles:
             address = d + "/" + name
@@ -48,13 +49,24 @@ class Requests:
         """
         self.queries.clear()
 
-        d = dirname(dirname(abspath(__file__))) + "/QUERIES"
+        d = dirname(dirname(abspath(__file__))) + "/_QUERIES"
         onlyfiles = [f for f in listdir(d) if isfile(join(d, f))]
+        if '.DS_Store' in onlyfiles: onlyfiles.remove('.DS_Store')
 
         for name in onlyfiles:
             address = d + "/" + name
             sequence = self.reader.read_Queried_seqs(address)
             self.queries[name[:-6]] = sequence
+
+
+
+    def return_loaded_models(self):
+        return self.modelnames
+    
+
+
+    def return_loaded_queries(self):
+        return self.queries.keys()
 
 
 
@@ -66,13 +78,3 @@ class Requests:
         scores = Algorithm.get_probs()
 
         return(max(scores, key=scores.get))
-
-
-def main():
-    R = Requests()
-    R.make_model(0.5)
-    R.make_queries()
-    print(R.return_most_likely("unknown1"))
-
-if __name__ == "__main__":
-    main()

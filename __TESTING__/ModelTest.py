@@ -38,7 +38,7 @@ class TestModel(unittest.TestCase):
         TN.set_Insert(C2)
         TN.set_Match(C3)
 
-        transitions = pd.DataFrame(data = {'p': np.log([2/8, 3/8, 3/8]), 't': [C1, C2, C3]})
+        transitions = pd.DataFrame(data = {'p': [2/8, 3/8, 3/8], 't': [C1, C2, C3]})
         TN.write_connections([1, -1, 0, 0, 1])
         self.assertTrue(TN.return_connections().equals(transitions))
 
@@ -53,7 +53,7 @@ class TestModel(unittest.TestCase):
         additions = ['A', 'B', 'C', 'D', 'E', 'F']
         results = [2,1,1,2,2,1,2,1,1,1,1,1,1,2,1,1,1,1,1,1,2,1]
         results = pd.DataFrame(data = {'p': results})
-        results = np.log(results['p'].div(28))
+        results = results['p'].div(28)
         TN.write_state(additions)
         self.assertTrue(TN.return_state()['p'].equals(results))
 
