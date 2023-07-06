@@ -1,6 +1,5 @@
 import sys
-sys.path.append("Algorithms")
-sys.path.append("Training")
+sys.path.insert(0,".")
 from Algorithms import *
 from Training import *
 import unittest

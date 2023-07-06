@@ -54,8 +54,6 @@ class Bestmatch:
         for x in range(2, len(self.__sequence)+1):
             I[x] = IE.at[IE.index[IE['s'] == self.__sequence[x-1]][0], 'p'] * I[x-1] * IT.at[1, 'p']
         
-        print(I)
-        print("\n")
         temp = I[-1]
         return self.__Forward_Recursive(D,I,M,ST,IT,ST,temp)
 
@@ -87,7 +85,6 @@ class Bestmatch:
             M_node = prev_M_t.at[2, 't']
 
             D_node_t = D_node.return_connections()
-            D_node_e = D_node.return_state()
 
             M_node_t = M_node.return_connections()
             M_node_e = M_node.return_state()
@@ -112,11 +109,6 @@ class Bestmatch:
                 new_I[x] = (I_node_e.at[I_node_e.index[I_node_e.s ==  self.__sequence[x-1]][0] , 'p'] *
                             (new_D[x]*D_node_t.at[1, 'p'] + new_M[x-1]*M_node_t.at[1, 'p']
                              + new_I[x-1]*I_node_t.at[1, 'p']))
-                
-            print("D = ", new_D)
-            print("I = ", new_I)
-            print("M = ", new_M)
-            print("\n")
                 
             value = new_I[-1] + new_M[-1] + new_D[-1]
 

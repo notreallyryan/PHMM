@@ -3,10 +3,12 @@ Main Trainer function for the profile HMM model.
 
 Does all of the organization, and passes on the requests to various objects.
 """
-
-import Transitions
-import Emissions
+import sys
+sys.path.insert(0,".")
 from Model import *
+from Training import Transitions
+from Training import Emissions
+
 
 class Trainer:
     
@@ -25,6 +27,9 @@ class Trainer:
         self.model = []
         self.Trans = Transitions.Transitions(self.model)
         self.Emit = Emissions.Emissions(self.model)
+
+    def return_model(self):
+        return self.model
 
     def determine_key(self, column):
         """

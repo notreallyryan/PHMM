@@ -3,6 +3,9 @@ Takes care of the emission aspect of the profile HMM model.
 
 It is not in charge of determining if a given index is a key feature or not.
 """
+import sys
+sys.path.insert(0,".")
+from Model import *
 
 class Emissions:
     
