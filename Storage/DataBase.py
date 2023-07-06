@@ -37,6 +37,14 @@ class DataBase:
         Returns access to the model stored under a given name. Assumes there is a model stored under the given name
         """
         return self.__database[model_name]
+    
+
+
+    def get_all(self):
+        """
+        Returns all of the models stored in the DataBase
+        """
+        return self.__database
 
 
 

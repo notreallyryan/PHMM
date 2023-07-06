@@ -1,5 +1,5 @@
 import sys
-sys.path.append("Model")
+sys.path.insert(0,".")
 from Model import *
 import unittest
 import pandas as pd

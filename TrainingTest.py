@@ -1,7 +1,6 @@
 import sys
-sys.path.append("Training")
+sys.path.insert(0,".")
 from Training import *
-sys.path.append("Model")
 from Model import *
 import unittest
 import pandas as pd
