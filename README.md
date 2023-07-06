@@ -23,9 +23,9 @@ If more sequences have blanks at that particular location, the amino acids obser
 
 [add image later]
 
-In this implementation, the user set a value that the fraction of observed amino acids must exceed to be considered a key feature. (ie a value of 0.5 means at least half of the observations at an index must be amino acids to be a key feature) This allows the user to control how flexible a model is. A smaller fraction will increase the matchability between model and any arbitrary sequence, while a larger one will cause the model to be more speciic to the family. 
+In this implementation, the user set a value that the fraction of observed amino acids must exceed to be considered a key feature. (ie a value of 0.5 means at least half of the observations at an index must be amino acids to be a key feature) This allows the user to control how flexible a model is. A smaller fraction will increase the matchability between model and any arbitrary sequence, while a larger one will cause the model to be more specific to the family. 
 
-The second step is to generate the appropriate nodes and connections for the model. In this implementation, Match and Delete Nodes connect to the next Match, Delete, and Insert Node, while Insert Nodes connect to the next Match and Delete Node, but also to themselves. This accounts for the possibility of multiple consecutive insertes between key features. A Start and an End Node are added for simplicity.
+The second step is to generate the appropriate nodes and connections for the model. In this implementation, Match and Delete Nodes connect to the next Match, Delete, and Insert Node, while Insert Nodes connect to the next Match and Delete Node, but also to themselves. This accounts for the possibility of multiple consecutive inserts between key features. A Start and an End Node are added for simplicity.
 
 [add image later]
 
