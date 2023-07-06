@@ -12,7 +12,7 @@ _Requires numpy and pandas to use_
 
 1. For each protein family you want to model, put one .fasta file in the FASTA folder. the .fasta file should contain all the aligned sequences that make up that family. (ie. each sequence must be the same length.)
 2. For each queried sequence, put a fasta file in the QUERIED folder.
-3. Run the program by...
+3. Run the program by running main.py, and following the prompts given
 
 ## How it works
 
