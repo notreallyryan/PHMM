@@ -107,8 +107,8 @@ class Bestmatch:
             
             #do the math.
             for x in range(1, len(new_D)):
-                new_D[x] = ((old_D[x]*prev_D_t.at[0, 'p'] + old_M[x]*prev_M_t.at[0, 'p']
-                             + old_I[x]*prev_I_t.at[0, 'p']))
+                new_D[x] = ((old_D[x]*prev_D_t.at[0, 'p'] + old_M[x-1]*prev_M_t.at[0, 'p']
+                             + old_I[x-1]*prev_I_t.at[0, 'p']))
 
                 new_M[x] = (M_node_e.at[M_node_e.index[M_node_e.s == self.__sequence[x-1]][0], 'p'] *
                             (old_D[x]*prev_D_t.at[2, 'p'] + old_M[x-1]*prev_M_t.at[2, 'p']
