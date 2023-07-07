@@ -38,9 +38,15 @@ _Additional Note: The use of objects as Nodes allows for better envisioning of t
 
 In order to determine which model the unknown sequence best matches, the Forward Algorithm can be used to find the probability of a model generating a given sequence. By comparing these probabilities, the best fitting model can be isolated.
 
-The basics and mathematical derivation of the algorithm can be found [here](https://en.wikipedia.org/wiki/Forward_algorithm), but essentially the algorithm uses the probabilities of being in a prior state with the emission probability to calculate the probability of arriving at the current state. The probability sum across all of the states in the last timestep is the probability that the model produces the given sequence.
+The basics and mathematical derivation of the algorithm can be found [here](https://en.wikipedia.org/wiki/Forward_algorithm), but essentially the algorithm uses the probabilities of being in a prior state with the emission and transition probabilities to calculate the probability of arriving at the current state. The probability sum across all of the states in the last timestep is the probability that the model produces the given sequence.
 
-Hidden Markov Model, 
+For Profile Hidden Markov Model, the algorithm is changed slightly. Instead of basing the current probability off the probability of being in the last state, the calculation takes into account the probability of the previous recorded amino acid being at a previous state.
 
+So for each node in the model, the algorithm must compute the probability of each of the amino acids in the sequence being at that node. Those values can then be used to calculate the new values in the next iteration of the Forwards Algorithm
 
+For Match Node at position _x_, the probability of an amino acid _y_ being expressed by this node relies on the probability of amino acid _y-1_ being expressed by Match and Insert node _x-1_ (M_{x-1}(_y-1_) and I_{x-1}(_y-1_)) and the probability that the amino acid supposed to be at position _y_ was deleted (D_{x}(_y_))
+
+For a Del Node at the same position, the calculation of whether a deletion occured between _y-1_ and _y_ relies on whether the previous amino acid _y-1_ was expressed by the previous Match and Insert Nodes (M_{x-1}(_y-1_) and I_{x-1}(_y-1_)), as well as whether there were any other amino acids supposed to be at position _y_ that were deleted (D_{x-1}(_y_))
+
+Insert Nodes at position _x_ depend on M_x and D_x. For a calculation regarding amino acid _y_ in I_x, the algorithm requires input from M_x(_y-1_) and D_x(_y_). It also requires input from itself, as whether amino acid _y_ is an insert depends on whether amino acid _y-1_ was an insert (I_x{_y-1_}
 
