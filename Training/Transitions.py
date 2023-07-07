@@ -46,6 +46,9 @@ class Transitions:
 
         for i in range(0, len(fro)):
             #8 cases to account for: MM, MD, MID, MIM, DM, DD, DIM, DID
+            #If transitioning to a match, apppend 0. If to an Insert, append 1. If to a Delete, append -1.
+
+            #If starting at a Match
             if fro[i] == 0:
                 if between[i] > 0:
                     M.append(1) #MI
@@ -53,6 +56,7 @@ class Transitions:
                     I.append(to[i]) #ID and IM and I to END
                 else: M.append(to[i]) #MD and MM, also M to END
 
+            #If starting at an insert
             elif fro[i] == -1:
                 if between[i] > 0:
                     D.append(1) #DI
@@ -72,7 +76,7 @@ class Transitions:
         transitions --  a 2D array of the observed transitions, obtained from the tally_transitions function
         """
         currlen = len(self.model)
-        if currlen == 2: 
+        if currlen == 2: #Only time there are two nodes to update is if there is only the start and insert node. 
             self.make_starting_transitions(transitions)
             return
 

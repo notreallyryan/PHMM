@@ -1,13 +1,14 @@
-"""
-Takes care of the emission aspect of the profile HMM model.
-
-It is not in charge of determining if a given index is a key feature or not.
-"""
 import sys
 sys.path.insert(0,".")
 from Model import *
 
 class Emissions:
+    """
+    Takes care of the emission aspect of the profile HMM model.
+
+    It is not in charge of determining if a given index is a key feature or not.
+    """
+
     
     def __init__(self, model) -> None:
         """
@@ -28,7 +29,7 @@ class Emissions:
 
         Keyword arguments:
         emissions --  a 2D array containing the emissions at each index between two states.
-            Including the starting key, but not the ending key.
+            Including the emissions at the starting key feature index, but not the ending key feature index.
         """
         if emissions: self.make_emissions(self.tally_emissions(emissions))
         
@@ -42,15 +43,15 @@ class Emissions:
         """
 
         M, I = [], []
-        #get emissions for key node
+        #get emissions for key node - the first list in the emissions list are the emission observed at the key feature
         for c in emissions[0]:
             if c != '-': M.append(c)
         
-        #get possible emissions between key node and next key node. 
+        #get possible emissions between key node and next key node. -- this is from all other lists in the provided list.
         if len(emissions) > 1:
             for index in range(1, len(emissions)):
                 for c in emissions[index]:
-                    if c != '-': I.append(c)
+                    if c != '-': I.append(c) 
         return [I, M]
 
     
@@ -63,11 +64,11 @@ class Emissions:
         emissions --  a 2D array of the observed emissions, obtained from the tally_emissions function
         """
         
-        if emissions[1][0] == 0: 
+        if emissions[1][0] == 0: #if the Key feature observations are all '0' indicates a Start Node, not a key feature
             self.make_starting_emissions(emissions)
             return
 
-        I,M = emissions[0], emissions[1], 
+        I,M = emissions[0], emissions[1]
         self.model[0].write_state(I)
         self.model[1].write_state(M)
     

@@ -3,12 +3,26 @@ import numpy as np
 import pandas as pd
 
 class Connected3Node(Node):
+    """
+    Accounts for the Transition probabilities of all nodes. 
+    
+    Every node will connect to three other nodes: an Insert, a Delete, and a Match
+
+    Only exception is the Last set of Nodes, which will only connect to an Insert and the End Node.
+    """
 
     def __init__(self, type):
+        """
+        Initiates the Object. Stores the probabilities and locations in a pandas dataframe (for practice)
+        """
         super().__init__(type)
         self.transitions = pd.DataFrame(data = {'p': np.ones(3), 't': [None]*3})
-        self.transitions_count = 3
+        self.transitions_count = 3 #for division later to get fractions
 
+
+    """
+    Sets up the destination nodes
+    """
     def set_Match(self, match):
         self.transitions.at[2, 't'] = match
     
@@ -47,6 +61,10 @@ class Connected3Node(Node):
 
             self.transitions_count +=1
 
+
+        """
+        If no End Node has been set, assume that current object is in last set of Nodes.
+        """
         if self.transitions.at[0,'t'] == None: 
             self.transitions.at[0,'p'] = 0
             self.transitions_count -= 1
