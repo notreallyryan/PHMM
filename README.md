@@ -27,7 +27,7 @@ In this implementation, the user set a value that the fraction of observed amino
 
 The second step is to generate the appropriate nodes and connections for the model. In this implementation, Match and Delete Nodes connect to the next Match, Delete, and Insert Node, while Insert Nodes connect to the next Match and Delete Node, but also to themselves. This accounts for the possibility of multiple consecutive inserts between key features. A Start and an End Node are added for simplicity.
 
-![image](https://github.com/notreallyryan/PHMM/assets/96549151/778fab06-936e-4d52-8ad6-408631d94a4b)
+![image](https://github.com/notreallyryan/PHMM/assets/96549151/1fb80af2-8971-42c8-ac05-d6a11d45c429)
 
 The last step is to add the transition and emission probabilities to each node, making sure to use the lapalcian smoothing trick, giving each node two sets of probabilities. 
 
