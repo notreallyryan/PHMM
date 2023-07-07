@@ -50,3 +50,4 @@ For a Del Node at the same position, the calculation of whether a deletion occur
 
 Insert Nodes at position _x_ depend on M_x and D_x. For a calculation regarding amino acid _y_ in I_x, the algorithm requires input from M_x(_y-1_) and D_x(_y_). It also requires input from itself, as whether amino acid _y_ is an insert depends on whether amino acid _y-1_ was an insert (I_x{_y-1_}
 
+When the final M_x, D_x, and I_x have been calculated, the probability of the model producing the sequence can be obtained by summing M_x(_y_), I_x(_y_), and D_x(_y_).
