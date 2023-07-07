@@ -36,3 +36,11 @@ _Additional Note: The use of objects as Nodes allows for better envisioning of t
 
 ### The Forwards Algorithm
 
+In order to determine which model the unknown sequence best matches, the Forward Algorithm can be used to find the probability of a model generating a given sequence. By comparing these probabilities, the best fitting model can be isolated.
+
+The basics of the algorithm can be found [here](https://en.wikipedia.org/wiki/Forward_algorithm), but essentially the algorithm uses the probabilities of being in a prior state to calculate the probability of arriving at the current state.
+
+In an ergodnic Hidden Markov Model, 
+
+
+
